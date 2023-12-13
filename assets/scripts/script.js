@@ -23,9 +23,9 @@ const songs = [
   {
     title: 'ထွားနုဲင်းရုဲင်းတဝ်း',
     artist: 'တဲမ်း-ခွန်တင်ဦး/ရွှစ်-ခွန်ပျူ',
-    coverPath: 'assets/images/cover2.jpg',
+    coverPath: 'assets/images/cover100.jpg',
     discPath: 'assets/music/music2.mp3',
-    duration: '4:11',
+    duration: '4:55',
   },
   
   {
