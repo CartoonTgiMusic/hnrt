@@ -22,7 +22,7 @@ const songs = [
   },
   {
     title: 'ထွားနုဲင်းရုဲင်းတဝ်း',
-    artist: 'တဲမ်း-ခွန်တင်ဦး / ရွှစ်-ခွန်ပျူ',
+    artist: 'တဲမ်း-ခွန်တင်ဦး/ရွှစ်-ခွန်ပျူ',
     coverPath: 'assets/images/cover2.jpg',
     discPath: 'assets/music/music2.mp3',
     duration: '4:11',
@@ -30,7 +30,7 @@ const songs = [
   
   {
     title: 'စွꩻခွင်ꩻဗဲင်းမွိုင်',
-    artist: 'တဲမ်း-ခွန်ဇိုလ် / ရွှစ်-ခွန်အောင်သိုက်',
+    artist: 'တဲမ်း-ခွန်ဇိုလ်/ရွှစ်-ခွန်အောင်သိုက်',
     coverPath: 'assets/images/cover3.jpg',
     discPath: 'assets/music/music3.mp3',
     duration: '4:50',
