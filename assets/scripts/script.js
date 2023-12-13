@@ -25,8 +25,9 @@ const songs = [
     artist: 'တဲမ်း-ခွန်တင်ဦး / ရွှစ်-ခွန်ပျူ',
     coverPath: 'assets/images/cover2.jpg',
     discPath: 'assets/music/music2.mp3',
-    duration: '4:45',
+    duration: '4:11',
   },
+  
   {
     title: 'စွꩻခွင်ꩻဗဲင်းမွိုင်',
     artist: 'တဲမ်း-ခွန်ဇိုလ် / ရွှစ်-ခွန်အောင်သိုက်',
