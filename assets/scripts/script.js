@@ -31,14 +31,14 @@ const songs = [
   {
     title: 'စွꩻခွင်ꩻဗဲင်းမွိုင်',
     artist: 'တဲမ်း-ခွန်ဇိုလ်/ရွှစ်-ခွန်အောင်သိုက်',
-    coverPath: 'assets/images/cover3.jpg',
+    coverPath: 'assets/images/cover300.jpg',
     discPath: 'assets/music/music3.mp3',
     duration: '4:50',
   },
   {
     title: 'အုံဟဝ်နေႏမွိုး',
     artist: 'တဲမ်း/ရွှစ်-ခွန်ပဒဲကော',
-    coverPath: 'assets/images/cover4.jpg',
+    coverPath: 'assets/images/cover400.jpg',
     discPath: 'assets/music/music4.mp3',
     duration: '4:50',
   },
@@ -108,7 +108,7 @@ const songs = [
   {
     title: 'ဝါးပေꩻဗွါ',
     artist: 'တဲမ်း-ခွန်ခွန်ကျော်ဦး / ရွှစ်-ခွန်ဇော်ခက်',
-    coverPath: 'assets/images/cover14.jpg',
+    coverPath: 'assets/images/cover140.jpg',
     discPath: 'assets/music/music14.mp3',
     duration: '5:04',
   },
