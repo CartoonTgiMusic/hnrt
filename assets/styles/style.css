@@ -16,7 +16,9 @@ body {
 }
 
 .container {
-  width: 30rem;
+  width: 40rem;
+  height: 85vh;
+  margin: 5px;
 }
 
 .heading {
