@@ -1,223 +1,233 @@
-const cover = document.getElementById('cover');
-const disc = document.getElementById('disc');
-const title = document.getElementById('title');
-const artist = document.getElementById('artist');
-const progressContainer = document.getElementById('progress-container');
-const progress = document.getElementById('progress');
-const timer = document.getElementById('timer');
-const duration = document.getElementById('duration');
-const prev = document.getElementById('prev');
-const play = document.getElementById('play');
-const next = document.getElementById('next');
-let songIndex = 0;
+let track_art = document.querySelector('.track-art');
+let track_name = document.querySelector('.track-name');
+let track_artist = document.querySelector('.track-artist');
+let track_writer = document.querySelector('.track-writer');
 
-// Songs info
-const songs = [
+let playpause_btn = document.querySelector('.playpause-track');
+let next_btn = document.querySelector('.next-track');
+let prev_btn = document.querySelector('.prev-track');
+let repeat_btn = document.querySelector('.repeat-track')
+
+let seek_slider = document.querySelector('.seek_slider');
+let volume_slider = document.querySelector('.volume_slider');
+let curr_time = document.querySelector('.current-time');
+let total_duration = document.querySelector('.total-duration');
+let randomIcon = document.querySelector('.fa-random');
+let curr_track = document.createElement('audio');
+
+let track_index = 0;
+let isPlaying = false;
+let isRandom = false;
+let updateTimer;
+
+const music_list = [
   {
     title: 'ဗါး',
-    artist: 'တဲမ်း/ရွှစ်-ခွန်ခွန်ကျော်ဦး',
+    artist: 'ခွန်ခွန်ကျော်ဦး',
+    writer: 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
     coverPath: 'assets/images/cover1.jpg',
     discPath: 'assets/music/music1.mp3',
-    duration: '4:11',
   },
   {
     title: 'ထွားနုဲင်းရုဲင်းတဝ်း',
-    artist: 'တဲမ်း-ခွန်တင်ဦး/ရွှစ်-ခွန်ပျူ',
+    writer:'တဲမ်း-ခွန်တင်ဦး',
+    artist: 'ရွှစ်-ခွန်ပျူ',
     coverPath: 'assets/images/cover100.jpg',
     discPath: 'assets/music/music2.mp3',
-    duration: '4:55',
   },
   
   {
     title: 'စွꩻခွင်ꩻဗဲင်းမွိုင်',
-    artist: 'တဲမ်း-ခွန်ဇိုလ်/ရွှစ်-ခွန်အောင်သိုက်',
+    artist: 'ခွန်အောင်သိုက်',
     coverPath: 'assets/images/cover300.jpg',
     discPath: 'assets/music/music3.mp3',
-    duration: '4:50',
+    writer: 'တဲမ်း-ခွန်ဇိုလ်',
   },
   {
     title: 'အုံဟဝ်နေႏမွိုး',
-    artist: 'တဲမ်း/ရွှစ်-ခွန်ပဒဲကော',
+    artist: 'ခွန်ပဒဲကော',
     coverPath: 'assets/images/cover400.jpg',
     discPath: 'assets/music/music4.mp3',
-    duration: '4:50',
+    writer: 'တဲမ်း-ခွန်ပဒဲကော',
   },
   {
     title: 'နားဟွိုန်ꩻ',
-    artist: 'တဲမ်း/ရွှစ်-ခွန်တကီးတဘဲ',
+    artist: 'ခွန်တကီးတဘဲ',
     coverPath: 'assets/images/cover5.jpg',
     discPath: 'assets/music/music5.mp3',
-    duration: '4:28',
+    writer: 'တဲမ်း-ခွန်တကီးတဘဲ',
   },
   {
     title: 'နာꩻဒေါ့ꩻ',
-    artist: 'တဲမ်း-ခွန်ပဒဲကော / ရွှစ်-ခွန်စောနိုင်',
+    artist: 'ရွှစ်-ခွန်စောနိုင်',
     coverPath: 'assets/images/cover6.jpg',
     discPath: 'assets/music/music6.mp3',
-    duration: '4:37',
+    writer: 'တဲမ်း-ခွန်ပဒဲကော',
   },
   {
     title: 'အွဥ်ဝင်ꩻစွီꩻစူ',
-    artist: 'တဲမ်း-ခွန်ခွန်ကျော်ဦး / ရွှစ်-ခွန်ပျူ+နန်းမိုခမ်း',
+    artist: 'ရွှစ်-ခွန်ပျူ+နန်းမိုခမ်း',
     coverPath: 'assets/images/cover7.jpg',
     discPath: 'assets/music/music7.mp3',
-    duration: '4:41',
+    writer: 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
   },
   {
     title: 'အရက်ꩻသွတ်ꩻခွေꩻအလောင်း',
-    artist: 'တဲမ်း/ရွှစ်-ခွန်အောင်သိုက်',
+    artist: 'ခွန်အောင်သိုက်',
     coverPath: 'assets/images/cover8.jpg',
     discPath: 'assets/music/music8.mp3',
-    duration: '4:20',
+    writer: 'တဲမ်း-ခွန်အောင်သိုက်',
   },
   {
     title: 'နွန်ႏ',
-    artist: 'တဲမ်း/ရွှစ်-ခွန်ခွန်ကျော်ဦး',
+    artist: 'ခွန်ခွန်ကျော်ဦး',
     coverPath: 'assets/images/cover9.jpg',
     discPath: 'assets/music/music9.mp3',
-    duration: '5:03',
+    writer: 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
   },
   {
     title: 'ရက်ꩻမွေးမွေးလဲဥ်းနာꩻ',
-    artist: 'တဲမ်း-ခွန်ဇေလတ် / ရွှစ်-ခွန်စောနိုင်',
+    artist: 'ခွန်စောနိုင်',
     coverPath: 'assets/images/cover10.jpg',
     discPath: 'assets/music/music10.mp3',
-    duration: '4:19',
+    writer: 'တဲမ်း-ခွန်ဇေလတ်',
   },
   {
     title: 'တူနယ်တဲနယ်',
-    artist: 'တဲမ်း/ရွှစ်-ခွန်ခွန်ကျော်ဦး',
+    artist: 'ခွန်ခွန်ကျော်ဦး',
     coverPath: 'assets/images/cover11.jpg',
     discPath: 'assets/music/music11.mp3',
-    duration: '3:49',
+    writer: 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
   },
   {
     title: 'အပဲစ်ꩻကင်ꩻထာꩻရက်ꩻ',
-    artist: 'တဲမ်း/ရွှစ်-ခွန်ကျော်စိုး',
+    artist: 'ခွန်ကျော်စိုး',
     coverPath: 'assets/images/cover12.jpg',
     discPath: 'assets/music/music12.mp3',
-    duration: '4:17',
+    writer: 'တဲမ်း-ခွန်ကျော်စိုး',
   },
   {
     title: 'နီဖာဗွေႏ',
-    artist: 'တဲမ်း/ရွှစ်-ခွန်ခွန်ကျော်ဦး',
+    artist: 'ခွန်ခွန်ကျော်ဦး',
     coverPath: 'assets/images/cover13.jpg',
     discPath: 'assets/music/music13.mp3',
-    duration: '4:14',
+    writer: 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
   },
   {
     title: 'ဝါးပေꩻဗွါ',
-    artist: 'တဲမ်း-ခွန်ခွန်ကျော်ဦး / ရွှစ်-ခွန်ဇော်ခက်',
+    artist: 'ခွန်ဇော်ခက်',
     coverPath: 'assets/images/cover140.jpg',
     discPath: 'assets/music/music14.mp3',
-    duration: '5:04',
+    writer: 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
   },
 ];
 
-// Load song initially
-loadSong(songs[songIndex]);
+loadTrack(track_index);
 
-// Load the given song
-function loadSong(song) {
-  cover.src = song.coverPath;
-  disc.src = song.discPath;
-  title.textContent = song.title;
-  artist.textContent = song.artist;
-  duration.textContent = song.duration;
+function loadTrack(track_index){
+    clearInterval(updateTimer);
+    reset();
+
+    curr_track.src = music_list[track_index].discPath;
+    curr_track.load();
+
+    track_art.style.backgroundImage = "url(" + music_list[track_index].coverPath+ ")";
+    track_name.textContent = music_list[track_index].title;
+    track_artist.textContent = music_list[track_index].artist;
+    track_writer.textContent = music_list[track_index].writer;
+    
+
+    updateTimer = setInterval(setUpdate, 1000);
+
+    curr_track.addEventListener('ended', nextTrack);
+   
 }
 
-// Toggle play and pause
-function playPauseMedia() {
-  if (disc.paused) {
-    disc.play();
-  } else {
-    disc.pause();
-  }
+
+function reset(){
+    curr_time.textContent = "00:00";
+    total_duration.textContent = "00:00";
+    seek_slider.value = 0;
+}
+function randomTrack(){
+    isRandom ? pauseRandom() : playRandom();
+}
+function playRandom(){
+    isRandom = true;
+    randomIcon.classList.add('randomActive');
+}
+function pauseRandom(){
+    isRandom = false;
+    randomIcon.classList.remove('randomActive');
+}
+function repeatTrack(){
+    let current_index = track_index;
+    loadTrack(current_index);
+    playTrack();
+}
+function playpauseTrack(){
+    isPlaying ? pauseTrack() : playTrack();
+}
+function playTrack(){
+    curr_track.play();
+    isPlaying = true;
+    playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
+}
+function pauseTrack(){
+    curr_track.pause();
+    isPlaying = false;
+    playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
+}
+function nextTrack(){
+    if(track_index < music_list.length - 1 && isRandom === false){
+        track_index += 1;
+    }else if(track_index < music_list.length - 1 && isRandom === true){
+        let random_index = Number.parseInt(Math.random() * music_list.length);
+        track_index = random_index;
+    }else{
+        track_index = 0;
+    }
+    loadTrack(track_index);
+    playTrack();
+}
+function prevTrack(){
+    if(track_index > 0){
+        track_index -= 1;
+    }else{
+        track_index = music_list.length -1;
+    }
+    loadTrack(track_index);
+    playTrack();
+}
+function seekTo(){
+    let seekto = curr_track.duration * (seek_slider.value / 100);
+    curr_track.currentTime = seekto;
+}
+function setVolume(){
+    curr_track.volume = volume_slider.value / 100;
+}
+function setUpdate(){
+    let seekPosition = 0;
+    if(!isNaN(curr_track.duration)){
+        seekPosition = curr_track.currentTime * (100 / curr_track.duration);
+        seek_slider.value = seekPosition;
+
+        let currentMinutes = Math.floor(curr_track.currentTime / 60);
+        let currentSeconds = Math.floor(curr_track.currentTime - currentMinutes * 60);
+        let durationMinutes = Math.floor(curr_track.duration / 60);
+        let durationSeconds = Math.floor(curr_track.duration - durationMinutes * 60);
+
+        if(currentSeconds < 10) {currentSeconds = "0" + currentSeconds; }
+        if(durationSeconds < 10) { durationSeconds = "0" + durationSeconds; }
+        if(currentMinutes < 10) {currentMinutes = "0" + currentMinutes; }
+        if(durationMinutes < 10) { durationMinutes = "0" + durationMinutes; }
+
+        curr_time.textContent = currentMinutes + ":" + currentSeconds;
+        total_duration.textContent = durationMinutes + ":" + durationSeconds;
+    }
 }
 
-// Update icon
-function updatePlayPauseIcon() {
-  if (disc.paused) {
-    play.classList.remove('fa-pause');
-    play.classList.add('fa-play');
-  } else {
-    play.classList.remove('fa-play');
-    play.classList.add('fa-pause');
-  }
-}
 
-// Update progress bar
-function updateProgress() {
-  progress.style.width = (disc.currentTime / disc.duration) * 100 + '%';
 
-  let minutes = Math.floor(disc.currentTime / 60);
-  let seconds = Math.floor(disc.currentTime % 60);
-  if (seconds < 10) {
-    seconds = '0' + seconds;
-  }
-  timer.textContent = `${minutes}:${seconds}`;
-}
 
-// Reset the progress
-function resetProgress() {
-  progress.style.width = 0 + '%';
-  timer.textContent = '0:00';
-}
 
-// Go to previous song
-function gotoPreviousSong() {
-  if (songIndex === 0) {
-    songIndex = songs.length - 1;
-  } else {
-    songIndex = songIndex - 1;
-  }
-
-  const isDiscPlayingNow = !disc.paused;
-  loadSong(songs[songIndex]);
-  resetProgress();
-  if (isDiscPlayingNow) {
-    playPauseMedia();
-  }
-}
-
-// Go to next song
-function gotoNextSong(playImmediately) {
-  if (songIndex === songs.length - 1) {
-    songIndex = 0;
-  } else {
-    songIndex = songIndex + 1;
-  }
-
-  const isDiscPlayingNow = !disc.paused;
-  loadSong(songs[songIndex]);
-  resetProgress();
-  if (isDiscPlayingNow || playImmediately) {
-    playPauseMedia();
-  }
-}
-
-// Change song progress when clicked on progress bar
-function setProgress(ev) {
-  const totalWidth = this.clientWidth;
-  const clickWidth = ev.offsetX;
-  const clickWidthRatio = clickWidth / totalWidth;
-  disc.currentTime = clickWidthRatio * disc.duration;
-}
-
-// Play/Pause when play button clicked
-play.addEventListener('click', playPauseMedia);
-
-// Various events on disc
-disc.addEventListener('play', updatePlayPauseIcon);
-disc.addEventListener('pause', updatePlayPauseIcon);
-disc.addEventListener('timeupdate', updateProgress);
-disc.addEventListener('ended', gotoNextSong.bind(null, true));
-
-// Go to next song when next button clicked
-prev.addEventListener('click', gotoPreviousSong);
-
-// Go to previous song when previous button clicked
-next.addEventListener('click', gotoNextSong.bind(null, false));
-
-// Move to different place in the song
-progressContainer.addEventListener('click', setProgress);
