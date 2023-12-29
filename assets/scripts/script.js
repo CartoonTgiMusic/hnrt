@@ -13,11 +13,13 @@ let volume_slider = document.querySelector('.volume_slider');
 let curr_time = document.querySelector('.current-time');
 let total_duration = document.querySelector('.total-duration');
 let randomIcon = document.querySelector('.fa-random');
+let loopIcon = document.querySelector('.fa-repeat')
 let curr_track = document.createElement('audio');
 
 let track_index = 0;
 let isPlaying = false;
 let isRandom = false;
+let isLoop = false;
 let updateTimer;
 
 const music_list = [
@@ -150,6 +152,7 @@ function reset(){
     seek_slider.value = 0;
 }
 function randomTrack(){
+    pauseLoop();
     isRandom ? pauseRandom() : playRandom();
 }
 function playRandom(){
@@ -160,11 +163,26 @@ function pauseRandom(){
     isRandom = false;
     randomIcon.classList.remove('randomActive');
 }
-function repeatTrack(){
-    let current_index = track_index;
-    loadTrack(current_index);
-    playTrack();
+function playLoop(){
+  isLoop = true;
+  loopIcon.classList.add('loopActive')
 }
+function pauseLoop(){
+  isLoop = false;
+  loopIcon.classList.remove('loopActive')
+}
+function repeatTrack(){
+     pauseRandom();
+    if(curr_track.loop != true ){
+      curr_track.loop = true;
+      curr_track.play();
+      playLoop();
+    } else{
+      curr_track.loop = false;
+      pauseLoop();
+    }
+}
+
 function playpauseTrack(){
     isPlaying ? pauseTrack() : playTrack();
 }
