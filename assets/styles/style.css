@@ -7,12 +7,12 @@
 
 body {
   font-family: 'Poppins', 'Montserrat', sans-serif;
-  background-color: #000000;
+  background-color:white;
   display: flex;
   justify-content: center;
   align-items: center;
   -webkit-tap-highlight-color: transparent;
-  color: #000;
+  color: white;
 }
 
 .container {
@@ -22,7 +22,7 @@ body {
 }
 
 .heading {
-  color: #ffffff;
+  color: black;
   text-align: center;
   font-weight: 400;
 }
@@ -33,13 +33,13 @@ body {
 }
 .home a{
   text-decoration: none;
-  color: #ffffff;
+  color:black;
 }
 
 .music-container {
-  background-color: #ffffff;
+  background-color: black;
   border-radius: 1rem;
-  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 1);
+  box-shadow: inset 0px 0px 30px rgb(255, 255, 255);
   margin-top: 40px;
   display: flex;
   flex-direction: column;
@@ -91,7 +91,7 @@ body {
     margin-bottom: 5px;
     }
     .active{
-        color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
     }
 
     .repeat-track,
@@ -124,7 +124,7 @@ body {
     -moz-appearance: none;
     appearance: none;
     height: 5px;
-    background:rgb(0, 0, 0) ;
+    background:rgb(255, 255, 255) ;
     -webkit-transition: .2s;
     transition: opacity .2s;
     }
@@ -136,8 +136,8 @@ body {
     appearance: none;
     width: 15px;
     height: 15px;
-    background: rgb(255, 255, 255);
-    border: 3px solid rgb(4, 0, 0);
+    background: rgb(0, 0, 0);
+    border: 3px solid rgb(255, 255, 255);
     cursor: grab;
     border-radius: 50%;
     }
