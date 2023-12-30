@@ -24,7 +24,7 @@ body {
 .heading {
   color: black;
   text-align: center;
-  font-weight: 400;
+  font-weight: 600;
 }
 .home{
     display: flex;
@@ -34,6 +34,10 @@ body {
 .home a{
   text-decoration: none;
   color:black;
+}
+.fa-house:hover,
+.fa-list:hover{
+  transform: scale(1.2);
 }
 
 .music-container {
@@ -49,7 +53,7 @@ body {
 
 .track-art {
   border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(255, 0, 251, 0.9);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
   position: relative;
   bottom: 30px;
   width: 200px;
