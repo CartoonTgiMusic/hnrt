@@ -24,8 +24,8 @@ body {
   height: 0;
   position: absolute;
   right: 2rem;
-  top: 80px;
-  background: rgba(0, 0, 0, 0.1);
+  top: 75px;
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(15px);
   border-radius: 10px;
   overflow: hidden;
