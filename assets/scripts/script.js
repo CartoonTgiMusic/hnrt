@@ -245,15 +245,6 @@ function setUpdate(){
     }
 }
 
-let toggleBtn = document.querySelector('.toggle-btn')
-let songMenu = document.querySelector('.menu')
-let changeBtn = document.querySelector('.fa-bars')
-
-toggleBtn.addEventListener('click',function(){
-  
-  songMenu.classList.toggle('active')
-  changeBtn.classList.toggle('fa-times')
-})
 
 
 
