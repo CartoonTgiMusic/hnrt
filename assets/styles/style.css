@@ -20,6 +20,32 @@ body {
   height: 90vh;
   padding: 20px;
 }
+.menu{
+  height: 0;
+  position: absolute;
+  right: 2rem;
+  top: 80px;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-right: 20px;
+}
+.menu.active{
+  height: auto;
+}
+  
+.fa-bars{
+  display: block;
+}
+
+.menu li{
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-self: flex-end;
+}
+
 
 .heading {
   color: black;
@@ -31,12 +57,12 @@ body {
     flex-direction: row;
     justify-content: space-between;
 }
-.home a{
+.home i{
   text-decoration: none;
   color:black;
 }
 .fa-house:hover,
-.fa-list:hover{
+.fa-bars:hover{
   transform: scale(1.2);
 }
 
