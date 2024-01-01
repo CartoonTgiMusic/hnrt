@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <title>List</title>
+    <style>
+        .buttons {
+    font-size: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    }
+    .repeat-track,
+    .random-track,
+    .playpause-track,
+    .prev-track,
+    .next-track {
+    padding: 20px;
+    opacity: 1;
+    transition: opacity .2s;
+    }
+    
+    .repeat-track:hover,
+    .random-track:hover,
+    .playpause-track:hover,
+    .prev-track:hover,
+    .next-track:hover {
+    transform: scale(1.2);
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ထွားနုဲင်းရုဲင်းတဝ်း</h2>
+        <ul class="ul">
+            <a href="assets/music/music1.mp3"><li>ဗါး</li></a>
+            <a href=""><li>ထွားနုဲင်းရုဲင်းတဝ်း</li></a>
+            <li>စွꩻခွင်ꩻဗဲင်းမွိုင်</li>
+            <li>အုံဟဝ်နေႏမွိုး</li>
+            <li>နားဟွိုန်ꩻ</li>
+            <li>နာꩻဒေါ</li>
+            <li>အွဥ်ဝင်ꩻစွီꩻစူ</li>
+            <li>အရက်ꩻသွတ်ꩻခွေꩻအလောင်း</li>
+            <li>နွန်ႏ</li>
+            <li>ရက်ꩻမွေးမွေးလဲဥ်းနာꩻ</li>
+            <li>တူနယ်တဲနယ်</li>
+            <li>ပဲစ်ꩻကင်ꩻထာꩻရက်ꩻ</li>
+            <li>နီဖာဗွေႏ</li>
+            <li>ဝါးပေꩻဗွါ</li>
+        </ul>
+        <div class="buttons">
+            <div class="random-track" onclick="randomTrack()">
+                <i class="fas fa-random fa-2x" title="random"></i>
+            </div>
+            <div class="prev-track" onclick="prevTrack()">
+                <i class="fa fa-step-backward fa-2x"></i>
+            </div>
+            <div class="playpause-track" onclick="playpauseTrack()">
+                <i class="fa fa-play-circle fa-5x"></i>
+            </div>
+            <div class="next-track" onclick="nextTrack()">
+                <i class="fa fa-step-forward fa-2x"></i>
+            </div>
+            <div class="repeat-track" onclick="repeatTrack()">
+                <i class="fas fa-repeat fa-2x" ></i>
+            </div>
+    </div>
+    </div>
+</body>
+</html>
