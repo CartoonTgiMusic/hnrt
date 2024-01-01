@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <script src="https://kit.fontawesome.com/a062562745.js" crossorigin="anonymous"></script>
     <title>MP3 Player</title>
     <link rel=stylesheet href="style.css" media=all> 
@@ -13,8 +14,12 @@ body{
   color: #ffc266;
   font-family: 'Roboto', sans-serif;
 }
-h2{
-    text-align: center;
+.header{
+  display: flex;
+  justify-content: space-between;
+  width: 420px;
+  margin: auto;
+  align-items: center;
 }
 .container{
     position: fixed;
@@ -144,17 +149,22 @@ padding-top: 10px;
 }
   </style>
   <body>
-      
-      
-      <audio id="myAudio" ontimeupdate="onTimeUpdate()">
-        <!-- <source src="audio.ogg" type="audio/ogg"> -->
-        <source id="source-audio" src="" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    <div class="container">
-    <h2>
-        ထွားနုဲင်းရုဲင်းတဝ်း
-    </h2>
+    <audio id="myAudio" ontimeupdate="onTimeUpdate()">
+      <!-- <source src="audio.ogg" type="audio/ogg"> -->
+      <source id="source-audio" src="" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
+  
+  <div class="container">
+      <div class="header">
+        <div class="home"><a href="https://cartoontgimusic.github.io/homepage"><i class="fas fa-house"></i></a></div>
+        <h2>ထွားနုဲင်းရုဲင်းတဝ်း</h2>
+        <div class="home"><a href="index.html"><i class="fas fa-bars"></i></a></div>
+      </div>
+
+
+
+
 
 <div class="infos-ctn">
   <div class="timer">00:00</div>
