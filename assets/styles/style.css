@@ -31,9 +31,9 @@ h2{
     flex-direction: row;
     justify-content: space-between;
 }
-.home i{
-  text-decoration: none;
-  color:black;
+.fa-bars, .fa-house{
+  font-size: 1.5rem;
+  color: black;
 }
 .fa-house:hover,
 .fa-bars:hover{
