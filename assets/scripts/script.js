@@ -116,7 +116,7 @@ const music_list = [
     writer: 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
   },
   {
-    title: 'ဝါးပေꩻဗွါ',
+    title: 'နာꩻထန်ႏထိုႏ',
     artist: 'ခွန်ဇော်ခက်',
     coverPath: 'assets/images/cover140.jpg',
     discPath: 'assets/music/music14.mp3',
